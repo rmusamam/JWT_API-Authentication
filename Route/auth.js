@@ -1,9 +1,10 @@
-const express = require('express')
-const router= express();
+const router = require('express').Router();
+ 
 
-
-router.get('/register',(req,res)=>{
+router.post('/register',(req,res)=>{
+    console.log(req)
+    console.log("Request Body:",req.body);
      res.send("register")
 })
 
-module.exports=router;
+module.exports=router;  
