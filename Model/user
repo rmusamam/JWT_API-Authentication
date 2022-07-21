@@ -12,7 +12,7 @@ const userSchema=mongoose.Schema({
         min:5,
         max:32
     },
-    password:{
+    password:{ 
         type:String,
         require:true,
         min:8
