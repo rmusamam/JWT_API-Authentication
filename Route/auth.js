@@ -2,7 +2,7 @@ const router = require("express").Router();
 const user = require("../Model/user");
 const joi= require("@hapi/joi")
 
-const schema={
+const schema=joi.object({
     name:joi.string()
     .min(5)
     .required(),
@@ -12,7 +12,7 @@ const schema={
     password:joi.string()
     .min(5)
     .required()
-}
+})
 
 
 router.post("/register", async (req, res) => {
