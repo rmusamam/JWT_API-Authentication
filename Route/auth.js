@@ -13,6 +13,14 @@ console.log(error,'this is error')
 // res.send(error)
 // console.log(error.details[0].message)
 
+//CHECKING FOR ALREADY USED EMAIL
+const userExist= await user.findOne({email: req.body.email})
+if(userExist){
+    "user already exists"
+    res.status(400).send("Email already exists")
+}
+
+
 if(error){
     sendError=res.status(400).send(error.details[0].message);
     return sendError
