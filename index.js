@@ -13,7 +13,7 @@ mongoose.connect(url,{
     useNewUrlParser:true
 },
 ()=>{
-    console.log('Data Base Connected')
+    console.log('Mongoose Data Base Connected')
 })
 
 

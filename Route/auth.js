@@ -9,11 +9,11 @@ router.post("/register", async (req, res) => {
 
 
   //lets validate the data before we add a user in DB
-  const { error } = registerValidation(req.body);
+  const  error  = registerValidation(req.body);
   console.log(error, "this is error");
 
   //CHECKING FOR ALREADY USED EMAIL
-  const userExist = await user.findOne({ email: req.body.email });
+  const userExist = await user.find({ email: req.body.email });
   if (userExist) {
     ("user already exists");
     res.status(400).send("Email already exists");
@@ -60,6 +60,7 @@ router.post('/login',async(req,res)=>{
 
     //EMAIT NOT EXIST
     const validUser= await user.findOne({email: req.body.email})
+    
     if(!validUser) return res.status(400).send("The Email does not exist")
 
 
@@ -68,7 +69,7 @@ router.post('/login',async(req,res)=>{
 
     //PASSWORD IS WRONG
     console.log(req.body)
-    console.log(user.password)
+    console.log(user)
     const validPassword= await bcryptjs.compare(req.body.password, user.password)
     if(!validPassword) return res.status(400).send("The Password is wrong")
 
