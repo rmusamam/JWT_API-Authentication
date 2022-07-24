@@ -9,11 +9,12 @@ router.post("/register", async (req, res) => {
 
 
   //lets validate the data before we add a user in DB
-  const  error  = registerValidation(req.body);
+  const  {error}  = registerValidation(req.body);
+ 
   console.log(error, "this is error");
 
   //CHECKING FOR ALREADY USED EMAIL
-  const userExist = await user.find({ email: req.body.email });
+  const userExist = await user.findOne({ email: req.body.email });
   if (userExist) {
     ("user already exists");
     res.status(400).send("Email already exists");
